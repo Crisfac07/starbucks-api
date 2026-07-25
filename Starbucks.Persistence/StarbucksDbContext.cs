@@ -23,6 +23,8 @@ namespace Starbucks.Persistence
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade)
                 ;
+
+            modelBuilder.Entity<Coffe>().Property(c=> c.Price).HasPrecision(10,2);
         }
     }
 }
