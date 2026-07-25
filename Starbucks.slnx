@@ -1,1 +1,6 @@
-<Solution />
+<Solution>
+  <Project Path="Starbucks.Api/Starbucks.Api.csproj" />
+  <Project Path="Starbucks.Application/Starbucks.Application.csproj" />
+  <Project Path="Starbucks.Domain/Starbucks.Domain.csproj" />
+  <Project Path="Starbucks.Persistence/Starbucks.Persistence.csproj" />
+</Solution>
