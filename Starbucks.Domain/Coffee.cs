@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Starbucks.Domain
 {
-    public class Coffe
+    public class Coffee : BaseEntity
     {
         public required string Name { get; set; }
         public string? Description { get; set; }
@@ -12,5 +12,7 @@ namespace Starbucks.Domain
         public int CategoryId { get; set; }
         public string? Image { get; set; }
         public  Category? Category { get; set; }
+        public ICollection<Ingredient>? Ingredients { get; set; } = [];
+        public ICollection<CoffeeIngredient>? CoffeeIngredients { get; set; } = [];
     }
 }
