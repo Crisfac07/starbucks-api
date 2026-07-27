@@ -37,13 +37,20 @@ namespace Starbucks.Persistence
 
                 j => j.HasOne(ci => ci.Coffee)
                     .WithMany(c => c.CoffeeIngredients)
-                    .HasForeignKey(ci => ci.CoffeeId),                    
+                    .HasForeignKey(ci => ci.CoffeeId),
 
-                    j => 
+                    j =>
                     {
-                        j.HasKey(t=> new { t.IngredientId, t.CoffeeId});
+                        j.HasKey(t => new { t.IngredientId, t.CoffeeId });
                     }
                 );
+
+            modelBuilder.Entity<Category>().HasData(GetCategories());
+        }
+
+        public IEnumerable<Category> GetCategories()
+        {
+           return Enum.GetValues<CategoryEnum>().Select(p => Category.Create((int)p));
         }
     }
 }
