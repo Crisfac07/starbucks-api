@@ -1,4 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Starbucks.Api.Resources;
+using Starbucks.Domain;
 using Starbucks.Persistence;
 
 namespace Starbucks.Api.Extensions
@@ -7,12 +10,12 @@ namespace Starbucks.Api.Extensions
     {
         public static async Task ApplyMigration
             (
-                this ApplicationBuilder applicationBuilder,
+                this WebApplication webApplication,
                 IWebHostEnvironment environment
             ) 
         {
 
-            using (var scope = applicationBuilder.ApplicationServices.CreateScope()) 
+            using (var scope = webApplication.Services.CreateScope()) 
             {
                 var service = scope.ServiceProvider;
                 var loggerFactory = service.GetRequiredService<ILoggerFactory>();
@@ -20,6 +23,7 @@ namespace Starbucks.Api.Extensions
                 {
                     var context = service.GetRequiredService<StarbucksDbContext>();
                     await context.Database.MigrateAsync();
+                    await DataSeed(context, environment);
 
                 }
                 catch (Exception ex) 
@@ -28,6 +32,32 @@ namespace Starbucks.Api.Extensions
                     logger.LogError(ex, "Error during the migration");
                 }
             }
+        }
+
+
+        public static async Task DataSeed(StarbucksDbContext dbContext, IWebHostEnvironment environment) {
+            if (dbContext.Coffees.Any()) return;
+            if (environment is null) throw new Exception("The environment was not loaded");
+            
+            var path = Path.Combine(environment.ContentRootPath, "Resources/coffe.json");
+            var coffeeDataText = await File.ReadAllTextAsync(path);
+
+            var data = JsonConvert.DeserializeObject<List<CoffeeJson>>(coffeeDataText)
+                ?? Enumerable.Empty<CoffeeJson>();
+
+            var coffees = data.Select(json => new Coffee
+            {
+                Id = json.CoffeeId,
+                Name = json.Title!,
+                Description = json.Description,
+                Price = 10,
+                CategoryId = json.Category,
+                Image = json.Image
+            }).ToArray();
+
+            await dbContext.Coffees.AddRangeAsync(coffees);
+            await dbContext.SaveChangesAsync();
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Starbucks.Persistence
     public class StarbucksDbContext(DbContextOptions options) : DbContext (options)
     {
         public required DbSet<Category> Categories { get; set; }
-        public required DbSet<Coffee> Coffes { get; set; }
+        public required DbSet<Coffee> Coffees { get; set; }
         public required DbSet<Ingredient> Ingredients { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

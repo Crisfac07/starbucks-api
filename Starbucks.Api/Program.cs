@@ -1,15 +1,15 @@
+using Starbucks.Api.Extensions;
 using Starbucks.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var environment = builder.Environment;
 // Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddPersistence(builder.Configuration);
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
+await app.ApplyMigration(environment);
 
 app.UseHttpsRedirection();
 
