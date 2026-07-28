@@ -74,7 +74,7 @@ namespace Starbucks.Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Coffes");
+                    b.ToTable("Coffees");
                 });
 
             modelBuilder.Entity("Starbucks.Domain.CoffeeIngredient", b =>

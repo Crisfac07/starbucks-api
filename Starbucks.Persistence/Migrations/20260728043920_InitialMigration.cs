@@ -40,7 +40,7 @@ namespace Starbucks.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Coffes",
+                name: "Coffees",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
@@ -52,9 +52,9 @@ namespace Starbucks.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Coffes", x => x.Id);
+                    table.PrimaryKey("PK_Coffees", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Coffes_Categories_CategoryId",
+                        name: "FK_Coffees_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
@@ -72,9 +72,9 @@ namespace Starbucks.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_CoffeeIngredient", x => new { x.IngredientId, x.CoffeeId });
                     table.ForeignKey(
-                        name: "FK_CoffeeIngredient_Coffes_CoffeeId",
+                        name: "FK_CoffeeIngredient_Coffees_CoffeeId",
                         column: x => x.CoffeeId,
-                        principalTable: "Coffes",
+                        principalTable: "Coffees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -100,8 +100,8 @@ namespace Starbucks.Persistence.Migrations
                 column: "CoffeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Coffes_CategoryId",
-                table: "Coffes",
+                name: "IX_Coffees_CategoryId",
+                table: "Coffees",
                 column: "CategoryId");
         }
 
@@ -112,7 +112,7 @@ namespace Starbucks.Persistence.Migrations
                 name: "CoffeeIngredient");
 
             migrationBuilder.DropTable(
-                name: "Coffes");
+                name: "Coffees");
 
             migrationBuilder.DropTable(
                 name: "Ingredients");

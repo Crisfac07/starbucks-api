@@ -39,7 +39,7 @@ namespace Starbucks.Api.Extensions
             if (dbContext.Coffees.Any()) return;
             if (environment is null) throw new Exception("The environment was not loaded");
             
-            var path = Path.Combine(environment.ContentRootPath, "Resources/coffe.json");
+            var path = Path.Combine(environment.ContentRootPath, "Resources/coffee.json");
             var coffeeDataText = await File.ReadAllTextAsync(path);
 
             var data = JsonConvert.DeserializeObject<List<CoffeeJson>>(coffeeDataText)

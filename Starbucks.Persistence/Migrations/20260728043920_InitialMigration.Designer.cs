@@ -11,7 +11,7 @@ using Starbucks.Persistence;
 namespace Starbucks.Persistence.Migrations
 {
     [DbContext(typeof(StarbucksDbContext))]
-    [Migration("20260727020612_InitialMigration")]
+    [Migration("20260728043920_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -77,7 +77,7 @@ namespace Starbucks.Persistence.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Coffes");
+                    b.ToTable("Coffees");
                 });
 
             modelBuilder.Entity("Starbucks.Domain.CoffeeIngredient", b =>
