@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.MediatOR\Core.MediatOR.csproj" />
     <ProjectReference Include="..\Starbucks.Persistence\Starbucks.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Categories\Commands\" />
   </ItemGroup>
 
 </Project>

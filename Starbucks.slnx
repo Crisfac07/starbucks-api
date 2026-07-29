@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Core/">
+    <Project Path="Core/Core.MediatOR/Core.MediatOR.csproj" Id="8de4a827-d542-406c-8705-559965fa530c" />
+  </Folder>
   <Project Path="Starbucks.Api/Starbucks.Api.csproj" />
   <Project Path="Starbucks.Application/Starbucks.Application.csproj" />
   <Project Path="Starbucks.Domain/Starbucks.Domain.csproj" />
