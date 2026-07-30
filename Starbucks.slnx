@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/Core/">
+    <Project Path="Core/Core.Mappy/Core.Mappy.csproj" Id="8ecf2b64-d0b0-4645-8ead-52f95562b629" />
     <Project Path="Core/Core.MediatOR/Core.MediatOR.csproj" Id="8de4a827-d542-406c-8705-559965fa530c" />
   </Folder>
   <Project Path="Starbucks.Api/Starbucks.Api.csproj" />
