@@ -1,6 +1,7 @@
 ﻿using Core.MediatOR.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Starbucks.Application.Categories.DTOs;
 using Starbucks.Domain;
 using Starbucks.Persistence;
 using static Starbucks.Application.Categories.Queries.CategoryListGet;
@@ -14,7 +15,7 @@ namespace Starbucks.Api.Controllers
         private readonly IMediator _mediator = mediator;
 
         [HttpGet]
-        public async Task<List<Category>> Get(CancellationToken cancellationToken) 
+        public async Task<List<CategoryDto>> Get(CancellationToken cancellationToken) 
         {
             var query = new Query();
             return await _mediator.Send(query, cancellationToken);

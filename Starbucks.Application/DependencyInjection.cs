@@ -1,4 +1,5 @@
-﻿using Core.MediatOR;
+﻿using Core.Mappy.Extensions;
+using Core.MediatOR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace Starbucks.Application
         public static IServiceCollection AddApplication( this IServiceCollection services) 
         {
             services.AddMediatOR(typeof(DependencyInjection).Assembly);
+            services.AddMapper();
+
             return services;
         
         }
