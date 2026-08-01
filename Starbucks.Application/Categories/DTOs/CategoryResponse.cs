@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Starbucks.Application.Categories.DTOs
 {
-    public class CategoryDto
+    public class CategoryResponse
     {
         public int CategoryId { get; set; }
         public required string NameTest { get; set; }
