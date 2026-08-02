@@ -14,7 +14,7 @@ namespace Starbucks.Api.Controllers
         public async Task<Guid> Create(CoffeeCreateRequest request,CancellationToken cancellationToken) 
         {
             var id = await _mediator.Send(new CoffeeCreate.Command { Coffee = request }, cancellationToken);
-            return (id);
+            return id;
         }
     }
 }

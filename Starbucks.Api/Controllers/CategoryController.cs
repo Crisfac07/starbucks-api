@@ -15,7 +15,7 @@ namespace Starbucks.Api.Controllers
         private readonly IMediator _mediator = mediator;
 
         [HttpGet]
-        public async Task<List<CategoryDto>> Get(CancellationToken cancellationToken) 
+        public async Task<List<CategoryResponse>> Get(CancellationToken cancellationToken) 
         {
             var query = new Query();
             return await _mediator.Send(query, cancellationToken);

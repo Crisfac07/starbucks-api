@@ -10,7 +10,7 @@ namespace Starbucks.Application.Categories.DTOs
     {
         public void Configure(IMapper mapper)
         {
-            mapper.CreateMap<Category, CategoryDto>(
+            mapper.CreateMap<Category, CategoryResponse>(
                 cfg => {
                     cfg.Map(dest => dest.CategoryId, src => src.Id);
                     cfg.Map(dest => dest.NameTest, dest=> dest.Name);

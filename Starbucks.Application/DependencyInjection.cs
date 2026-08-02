@@ -1,5 +1,6 @@
 ﻿using Core.Mappy.Extensions;
 using Core.MediatOR;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Starbucks.Application
         {
             services.AddMediatOR(typeof(DependencyInjection).Assembly);
             services.AddMapper();
+            services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
             return services;
         

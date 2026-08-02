@@ -12,16 +12,16 @@ namespace Starbucks.Application.Categories.Queries
 {
     public class CategoryListGet
     {
-        public class Query : IRequest<List<CategoryDto>> { }
+        public class Query : IRequest<List<CategoryResponse>> { }
 
-        public class Handler (StarbucksDbContext dbContext, IMapper mapper) : IRequestHandler<Query, List<CategoryDto>>
+        public class Handler (StarbucksDbContext dbContext, IMapper mapper) : IRequestHandler<Query, List<CategoryResponse>>
         {
             private readonly StarbucksDbContext _dbContext = dbContext;
             private readonly IMapper _mapper = mapper;
-            public async Task<List<CategoryDto>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<List<CategoryResponse>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var categories = await _dbContext.Categories.ToListAsync(); 
-                return _mapper.Map<List<CategoryDto>>(categories);
+                return _mapper.Map<List<CategoryResponse>>(categories);
             }
         }
     }
