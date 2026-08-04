@@ -14,6 +14,11 @@
 
   <ItemGroup>
     <Folder Include="Categories\Commands\" />
+    <Folder Include="Coffees\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
   </ItemGroup>
 
 </Project>

@@ -27,7 +27,7 @@ namespace Starbucks.Application.Coffees.Commands
             {
                 await _validator.ValidateAndThrowAsync(request, cancellationToken);
 
-                var coffee = _mapper.Map<Coffee>(request);
+                var coffee = _mapper.Map<Coffee>(request.Coffee);
                 _dbContext.Coffees.Add(coffee);
                 await dbContext.SaveChangesAsync(cancellationToken);
                 
