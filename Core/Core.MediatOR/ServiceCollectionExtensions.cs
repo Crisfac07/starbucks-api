@@ -22,6 +22,13 @@ namespace Core.MediatOR
             .WithScopedLifetime()
             );
 
+            services.Scan(
+                scan=> scan.FromAssemblies(assemblies)
+                .AddClasses(c => c.AssignableTo(typeof(IPipelineBehavior<,>)))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime()
+                );
+
             return services;
         }
     }
