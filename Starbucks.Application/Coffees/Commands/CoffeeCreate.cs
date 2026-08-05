@@ -17,15 +17,14 @@ namespace Starbucks.Application.Coffees.Commands
                 public required CoffeeCreateRequest Coffee { get; set; }
         }
 
-        public class Handler(StarbucksDbContext dbContext,IMapper mapper, IValidator<Command> validator) : IRequestHandler<Command, Guid>
+        public class Handler(StarbucksDbContext dbContext,IMapper mapper) : IRequestHandler<Command, Guid>
         {
             private readonly StarbucksDbContext _dbContext = dbContext;
             private readonly IMapper _mapper = mapper;
-            private readonly IValidator<Command> _validator = validator;
+
 
             public async Task<Guid> Handle(Command request, CancellationToken cancellationToken)
             {
-                await _validator.ValidateAndThrowAsync(request, cancellationToken);
 
                 var coffee = _mapper.Map<Coffee>(request.Coffee);
                 _dbContext.Coffees.Add(coffee);
