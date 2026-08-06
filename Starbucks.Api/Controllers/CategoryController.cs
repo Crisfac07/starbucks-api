@@ -8,17 +8,18 @@ using static Starbucks.Application.Categories.Queries.CategoryListGet;
 
 namespace Starbucks.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/categories")]
     [ApiController]
     public class CategoryController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator _mediator = mediator;
 
         [HttpGet]
-        public async Task<List<CategoryResponse>> Get(CancellationToken cancellationToken) 
+        public async Task<IActionResult> Get(CancellationToken cancellationToken) 
         {
             var query = new Query();
-            return await _mediator.Send(query, cancellationToken);
+            var categories = await _mediator.Send(query, cancellationToken);
+            return Ok(categories);
         }
 
     }
